@@ -57,8 +57,6 @@ def test_by_class_name(driver_chrome):
     elements = driver_chrome.find_elements(By.CLASS_NAME, class_name)
     assert len(elements) == 4
 
-    # ---------
-
 
 def test_by_name_css(driver_chrome):
     driver_chrome.get('https://ozon.by/')
@@ -98,10 +96,12 @@ def test_by_xpath(driver_chrome):
     xpath = '//form/button/div'
     assert driver_chrome.find_element(By.XPATH, xpath)
 
+
 def test_by_xpath_attr(driver_chrome):
     driver_chrome.get('https://ozon.by/')
     xpath = '//*[@class="ag15-a"]'
     assert driver_chrome.find_element(By.XPATH, xpath)
+
 
 def test_by_xpath_text(driver_chrome):
     driver_chrome.get('https://ozon.by/')
@@ -118,8 +118,7 @@ def test_by_xpath_text_by_contains(driver_chrome):
 def get_by_data_id(data_id):
     return f"//*[data-id={data_id}]"
 
+
 def test_by_data_id(driver_chrome):
     driver_chrome.get('https://www.avito.ru/')
     assert driver_chrome.find_element(get_by_data_id('1838'))
-
-
