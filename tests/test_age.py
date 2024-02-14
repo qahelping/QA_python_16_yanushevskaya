@@ -1,16 +1,6 @@
 import pytest
 
 
-# 19
-# 18
-# 0 Erorr
-# -1 Erorr
-# 17 Erorr
-# 110
-# 1,5 Erorr
-# 56
-
-# от 18 и до 100
 def check_age(user):
     if 100 > user >= 18:
         return True
@@ -22,4 +12,3 @@ def check_age(user):
                                          (-1, False), (1.3, False), (110, False), (101, False)])
 def test_age(age, result):
     assert check_age(age) is result
-
