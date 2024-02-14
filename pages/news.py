@@ -1,14 +1,15 @@
 import time
 
-from helpers import get_locator_by_css
+from pages.base_page import BasePage
 
 
-class NewsPage:
+class NewsPage(BasePage):
     TITLE = '[id="main-heading"]'
 
     def __init__(self, driver):
+        super().__init__(driver)
         self.driver = driver
 
     def assert_that_title_is_visible(self):
         time.sleep(1)
-        assert get_locator_by_css(self.driver, self.TITLE), 'Title not found'
+        assert self.get_locator_by_css(self.TITLE), 'Title not found'

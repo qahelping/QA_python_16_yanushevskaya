@@ -1,13 +1,19 @@
-from helpers import get_locator_by_class
+from locators.main_locators import MainLocators
+from pages.base_page import BasePage
 
 
-class MainPage:
-    # locataors
-    MAIN_NEWS = 'gs-c-promo-heading gs-o-faux-block-link__overlay-link gel-paragon-bold nw-o-link-split__anchor'
+class MainPage(BasePage):
 
     def __init__(self, driver):
+        super().__init__(driver)
         self.driver = driver
+        self.locators = MainLocators()
 
     def click_on_main_news(self):
-        element = get_locator_by_class(self.driver, self.MAIN_NEWS)
-        element.click()
+        self.click_on(self.locators.MAIN_NEWS)
+
+    def goto(self):
+        self.driver.get('https://www.bbc.com/news')
+
+    def assert_text(self, text, locator):
+        assert 'Elemental Selenium' == base_page.get_text('//*[@id="page-footer"]/div/div/a')
