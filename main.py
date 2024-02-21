@@ -1,12 +1,31 @@
-def sum(arg):
-    total = 0
-    for val in arg:
-        total += val
-    return total
+import logging
+import sys
+
+import requests
 
 
-def check_age(user):
-    if user > 18:
-        return True
-    else:
-        return False
+def create_logger():
+    logger = logging.getLogger()
+
+    formatter = logging.Formatter('%(asctime)s - %(message)s')
+    console_handler = logging.StreamHandler()
+    console_handler.setFormatter(formatter)
+
+    loger_level = sys.argv[2]
+    print(loger_level)
+
+    if loger_level == 'INFO':
+        logger.setLevel(logging.INFO)
+    if loger_level == 'ERROR':
+        logger.setLevel(logging.ERROR)
+    if loger_level == 'CRITICAL':
+        logger.setLevel(logging.CRITICAL)
+    if loger_level == 'WARNING':
+        logger.setLevel(logging.WARNING)
+
+
+    logger.addHandler(console_handler)
+    return logger
+
+
+logger = create_logger()

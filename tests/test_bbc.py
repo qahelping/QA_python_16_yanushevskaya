@@ -1,3 +1,5 @@
+import allure
+
 from pages import (MainPage, NewsPage)
 
 import pytest
@@ -11,6 +13,7 @@ def test_open_main_new(driver):
 
 
 @pytest.mark.bbc
+@allure.title("Test BBC")
 def test_open_main_new(driver):
     main_page = MainPage(driver)
     main_page.goto()
