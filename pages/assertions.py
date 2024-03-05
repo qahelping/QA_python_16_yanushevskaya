@@ -13,4 +13,6 @@ class Assertions(BasePage):
         self.driver = driver
 
     def assert_text(self, text, locator):
-        assert 'Elemental Selenium' == self.get_text('//*[@id="page-footer"]/div/div/a'), f"Text  not found"
+        assert "Elemental Selenium" == self.get_text(
+            '//*[@id="page-footer"]/div/div/a'
+        ), f"Text  not found"

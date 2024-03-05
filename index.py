@@ -28,5 +28,5 @@ def delete(url):
         return None
 
 
-response_content = delete('https://httpbin.org/status/404')
-response_content2 = delete('https://httpbin.org/status/202')
+response_content = delete("https://httpbin.org/status/404")
+response_content2 = delete("https://httpbin.org/status/202")

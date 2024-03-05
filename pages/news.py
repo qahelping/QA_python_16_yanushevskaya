@@ -12,4 +12,4 @@ class NewsPage(BasePage):
 
     def assert_that_title_is_visible(self):
         time.sleep(1)
-        assert self.get_locator_by_css(self.TITLE), 'Title not found'
+        assert self.get_locator_by_css(self.TITLE), "Title not found"

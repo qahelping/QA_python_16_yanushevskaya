@@ -1,9 +1,8 @@
 import allure
 
-from pages import (MainPage, NewsPage)
+from pages import MainPage, NewsPage
 
 import pytest
-
 
 
 @pytest.mark.bbc
@@ -17,6 +16,3 @@ def test_open_main_new(driver):
 def test_open_main_new(driver):
     main_page = MainPage(driver)
     main_page.goto()
-
-
-

@@ -3,7 +3,7 @@ import pytest
 from selenium.webdriver.common.by import By
 
 from data import DROPDOWN_URL
-from data.ulrs import CONTEXT_URL, INPUTS
+from data.ulrs import INPUTS
 from pages.assertions import Assertions
 from pages.base_page import BasePage
 
@@ -101,3 +101,9 @@ def test_cookie(driver):
     text2 = base_page.get_text('//*[@id="content"]/div/h3')
     assert text1 != text2
     assert text1 == text2
+
+
+def test_cookie2(driver):
+    driver.get("https://the-internet.herokuapp.com/abtest")
+
+    assert True

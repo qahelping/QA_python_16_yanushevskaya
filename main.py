@@ -1,31 +1,24 @@
-import logging
-import sys
+from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service as ChromeService
+from visual_regression_tracker import VisualRegressionTracker, Config, TestRun
 
-import requests
+driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+vrt = VisualRegressionTracker()
 
-
-def create_logger():
-    logger = logging.getLogger()
-
-    formatter = logging.Formatter('%(asctime)s - %(message)s')
-    console_handler = logging.StreamHandler()
-    console_handler.setFormatter(formatter)
-
-    loger_level = sys.argv[2]
-    print(loger_level)
-
-    if loger_level == 'INFO':
-        logger.setLevel(logging.INFO)
-    if loger_level == 'ERROR':
-        logger.setLevel(logging.ERROR)
-    if loger_level == 'CRITICAL':
-        logger.setLevel(logging.CRITICAL)
-    if loger_level == 'WARNING':
-        logger.setLevel(logging.WARNING)
-
-
-    logger.addHandler(console_handler)
-    return logger
-
-
-logger = create_logger()
+with vrt:
+    try:
+        driver.get("http://www.python.org")
+        vrt.track(
+            TestRun(
+                name="Image name",
+                imageBase64=driver.get_screenshot_as_base64(),
+                diffTollerancePercent=0,
+                os="Mac",
+                browser="Chrome",
+                viewport="800x600",
+                device="PC",
+            )
+        )
+    finally:
+        driver.quit()

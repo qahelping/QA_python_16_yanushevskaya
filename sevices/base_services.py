@@ -3,7 +3,7 @@ import requests
 from main import logger
 
 
-class BaseServices():
+class BaseServices:
 
     def path(self, url, headers=None, body=None):
         response = requests.patch(url, headers=headers, data=body)

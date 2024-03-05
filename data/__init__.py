@@ -1,1 +1,1 @@
-from data.ulrs import DROPDOWN_URL
+from data.ulrs import DROPDOWN_URL  # noqa

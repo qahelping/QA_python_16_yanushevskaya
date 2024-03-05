@@ -48,6 +48,7 @@ from sevices.cats_services import CatServices
 #     assert response.status_code == 500, f"URL: {url} != 500"
 #
 
+
 # def test_api_history():
 #     url = 'http://github.com/'
 #     response = requests.get(url)
@@ -69,12 +70,13 @@ from sevices.cats_services import CatServices
 def test_api_get_params_json():
     cat_services = CatServices()
 
-
     response = cat_services.search()
-    assert response[0].get('height')
-    assert response[0].get('id')
-    assert response[0].get('url')
-    assert response[0].get('width')
+    assert response[0].get("height")
+    assert response[0].get("id")
+    assert response[0].get("url")
+    assert response[0].get("width")
+
+
 #
 #
 # def test_api_raise_for_codes_ok():
@@ -105,54 +107,46 @@ def test_api_post():
         "email": "string",
         "password": "string",
         "phone": "string",
-        "userStatus": 0
+        "userStatus": 0,
     }
 
-    url = 'https://petstore.swagger.io/v2/user/createWithArray'
+    url = "https://petstore.swagger.io/v2/user/createWithArray"
     reponse = requests.post(url, data=body)
     print(reponse.json())
 
 
 def test_api_post_json():
-    body = [{
-        "id": 0,
-        "username": "string",
-        "firstName": "string",
-        "lastName": "string",
-        "email": "string",
-        "password": "string",
-        "phone": "string",
-        "userStatus": 0
-    }]
+    body = [
+        {
+            "id": 0,
+            "username": "string",
+            "firstName": "string",
+            "lastName": "string",
+            "email": "string",
+            "password": "string",
+            "phone": "string",
+            "userStatus": 0,
+        }
+    ]
 
-    url = 'https://petstore.swagger.io/v2/user/createWithArray'
+    url = "https://petstore.swagger.io/v2/user/createWithArray"
     reponse = requests.post(url, data=json.dumps(body))
     print(reponse.json())
 
 
 def test_add_new_pet_to_the_store():
-    name = 'caatty'
-    status = 'available'
+    name = "caatty"
+    status = "available"
     body = {
         "id": 0,
-        "category": {
-            "id": 0,
-            "name": "string"
-        },
+        "category": {"id": 0, "name": "string"},
         "name": "caatty",
-        "photoUrls": [
-            "string"
-        ],
-        "tags": [
-            {
-                "id": 0,
-                "name": "string"
-            }
-        ],
-        "status": status
+        "photoUrls": ["string"],
+        "tags": [{"id": 0, "name": "string"}],
+        "status": status,
     }
 
-    url = 'https://petstore.swagger.io/v2/pet'
+    url = "https://petstore.swagger.io/v2/pet"
     reponse = requests.post(url, data=json.dumps(body))
     reponse_json = reponse.json()
     assert reponse.status_code == 200
@@ -161,31 +155,36 @@ def test_add_new_pet_to_the_store():
 
 
 def test_api_headers():
-    url = 'https://petstore.swagger.io/v2/user/createWithArray'
-    headers = {'accept': 'application/json',
-               'Content-Type': 'application/json'}
+    url = "https://petstore.swagger.io/v2/user/createWithArray"
+    headers = {"accept": "application/json", "Content-Type": "application/json"}
     body = {
-            "id": 0,
-            "username": "string",
-            "firstName": "string",
-            "lastName": "string",
-            "email": "string",
-            "password": "string",
-            "phone": "string",
-            "userStatus": 0
-        }
+        "id": 0,
+        "username": "string",
+        "firstName": "string",
+        "lastName": "string",
+        "email": "string",
+        "password": "string",
+        "phone": "string",
+        "userStatus": 0,
+    }
 
     response = requests.post(url, data=body, headers=headers)
     assert response
 
+
 def test_api_file():
     import logging
-    url = 'https://petstore.swagger.io/v2/pet/1/uploadImage'
-    headers = {'accept': 'application/json',
-               'Content-Type': 'application/json'}
 
-    file = {'file': open ('/Users/elenayanushevskaya/Desktop/QA_python_16_yanushevskaya/cute-cat-relaxing-in-studio_23-2150692717.avif', 'rb')}
+    url = "https://petstore.swagger.io/v2/pet/1/uploadImage"
+    headers = {"accept": "application/json", "Content-Type": "application/json"}
+
+    file = {
+        "file": open(
+            "/Users/elenayanushevskaya/Desktop/QA_python_16_yanushevskaya/cute-cat-relaxing-in-studio_23-2150692717.avif",
+            "rb",
+        )
+    }
 
     response = requests.post(url, headers=headers, files=file)
     reponse_json = response.json()
-    logging.error(f'EROOR {reponse_json}')
+    logging.error(f"EROOR {reponse_json}")

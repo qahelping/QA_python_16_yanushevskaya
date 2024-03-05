@@ -1,12 +1,6 @@
-import time
 import pytest
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service as ChromeService
-from selenium.webdriver.common.by import By
-from webdriver_manager.chrome import ChromeDriverManager
 
 from data import DROPDOWN_URL
-from data.ulrs import CONTEXT_URL, INPUTS
 from pages.base_page import BasePage
 
 

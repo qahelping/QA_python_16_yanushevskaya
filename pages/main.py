@@ -16,7 +16,7 @@ class MainPage(BasePage):
 
     @allure.step("Step 1")
     def goto(self):
-        self.driver.get('https://www.bbc.com/news')
+        self.driver.get("https://www.bbc.com/news")
 
     def assert_text(self, text, locator):
-        assert 'Elemental Selenium' == self.get_text('//*[@id="page-footer"]/div/div/a')
+        assert "Elemental Selenium" == self.get_text('//*[@id="page-footer"]/div/div/a')

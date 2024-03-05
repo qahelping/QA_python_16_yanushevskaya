@@ -16,7 +16,7 @@ class BasePage:
         self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight);")
 
     def click_on(self, locator):
-        print(f'click on {locator}')
+        print(f"click on {locator}")
         element = self.driver.find_element(By.XPATH, locator)
         element.click()
 

@@ -19,4 +19,3 @@ def test_sum_7():
 def test_sum_error():
     with pytest.raises(AssertionError):
         assert sum((1, 2, 2)) == 13, "Should be 6"
-
